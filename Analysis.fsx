@@ -74,13 +74,13 @@ let SuicidesForPlayerInWeek player week =
 
 let TotalKills player =
     rows
-    |> Seq.filter (fun p -> p.KilledBy = p.Player)
+    |> Seq.filter (fun p -> p.KilledBy = player)
     |> Seq.length
 
 let KillsForPlayerInWeek player week =
     rows
     |> Seq.filter (fun p -> p.Week = week)
-    |> Seq.where (fun p -> p.KilledBy = p.Player)
+    |> Seq.where (fun p -> p.KilledBy = player)
     |> Seq.length
 
 let TotalOpponentKills player = (TotalKills player) - (TotalSuicides player)
